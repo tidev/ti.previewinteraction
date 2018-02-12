@@ -83,7 +83,7 @@ events:
 
       - name: touchPoint
         summary: Point at which source view got touched.
-        type: TiPoint
+        type: Point
 
   - name: pop
     summary: Fired when the user pops the preview.
@@ -98,7 +98,7 @@ events:
 
       - name: touchPoint
         summary: Point at which source view got touched.
-        type: TiPoint
+        type: Point
 
 examples:
   - title: Use preview interactions as property of a Ti.UI.View
