@@ -1,0 +1,179 @@
+---
+name: Modules.PreviewInteraction
+summary: PreviewInteraction module
+description: |
+    This module provides custom user experience in response to 3D Touch interactions. 
+
+    ### PreviewInteraction Resources
+
+    - **iOS**
+      - [PreviewInteraction](https://developer.apple.com/documentation/uikit/uipreviewinteraction)
+
+    ### Requirements
+    
+    - **iOS**
+      - iOS 10 and later
+      - 3D-Touch supported devices
+
+    ### Getting Started
+
+    -   View the [Using Titanium Modules](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules) 
+        document for instructions on getting started with using this module in your application.
+
+    ### Accessing the Module
+
+    -   Use `require` to access this module from JavaScript:
+
+            var TiPreviewInteraction = require('ti.previewinteraction');
+
+        The `TiPreviewInteraction` variable is a reference to the Module object.
+        
+    
+    -   iOS example applications are located in the `ios/example/` folder of the module:
+    
+    ### Note
+
+    -   If you want to provide the system default  previewing behavior (peek and pop), use Titanium.UI.iOS.PreviewContext. 
+
+    -   This feature requires iOS 10 and a 3D-Touch capable device (such as iPhone 6S or iPhone 6S Plus).
+        You cannot test this  on the iOS simulator.
+        To check if the current device supports this feature, use the <TiPreviewInteraction.previewInteractionSupported>
+        property.
+
+
+extends: Titanium.Module
+since: "1.0.0"
+osver: {ios: {min: "10.0"}}
+platforms: [iphone]
+
+methods:
+  - name: previewInteractionSupported
+    summary: Determines if the current device supports PreviewInteraction.
+    since: "1.0.0"
+    platforms: [ios]
+    returns:
+        type: Boolean
+
+---
+
+name: Modules.PreviewInteraction.PreviewInteraction
+summary: Represent PreviewInteraction Proxy
+description: |
+    Preview interaction is responsible for managing 3D Touch interactions for a specified view. 
+    It uses events (peek, pop, cancel) to communicate the progress and status of the interaction to your code.
+extends: Titanium.Proxy
+since: "1.0.0"
+platforms: [iphone]
+osver: {ios: {min: "10.0"}}
+
+methods:
+  - name: cancelInteraction
+    summary: Cancels the current preview interaction.
+    description: |
+        When a preview interaction is in progress, use this method to cancel it, preventing any further callbacks.
+    since: "1.0.0"
+    platforms: [ios]
+
+events:
+  - name: peek
+    summary: Fired when the user peeks the preview.
+
+    properties:
+      - name: progress
+        type: Number
+        summary: Provides progress of peek ranging between 0 and 1.
+
+      - name: ended
+        summary: Bool value indicating progress has ended or not.
+        type: Number
+
+      - name: touchPoint
+        summary: Point at which source view got touched.
+        type: TiPoint
+
+  - name: pop
+    summary: Fired when the user pop the preview.
+
+    properties:
+      - name: progress
+        type: Number
+        summary: Provides progress of pop ranging between 0 and 1.
+
+      - name: ended
+        summary: Bool value indicating progress has ended or not.
+        type: Number
+
+      - name: touchPoint
+        summary: Point at which source view got touched.
+        type: TiPoint
+
+examples:
+  - title: PreviewInteraction as property of  View (iOS)
+    example: |
+        This example demonstrates to use previewinteraction as property of view. 
+
+            var TiPreviewInteraction = require('ti.previewinteraction');
+ 
+            var win = Ti.UI.createWindow({
+                backgroundColor: 'red'
+            });
+
+            var previewInteraction = TiPreviewInteraction.createPreviewInteraction();
+
+
+            var view = Ti.UI.createView({
+                backgroundColor : 'blue',
+                height: 200,
+                width : 200,
+                previewInteraction : previewInteraction
+            });
+
+            previewInteraction.addEventListener('peek', function(e) {
+           
+            });
+
+            previewInteraction.addEventListener('pop', function(e) {
+
+            });
+
+            previewInteraction.addEventListener('cancel', function(e) {
+            });
+
+            win.add(view);
+            win.open();
+
+  - title: View as property of PreviewInteraction (iOS)
+    example: |
+        This example demonstrates to use  view as property of previewinteraction. 
+
+            var TiPreviewInteraction = require('ti.previewinteraction');
+ 
+            var win = Ti.UI.createWindow({
+            backgroundColor: 'red'
+            });
+
+            var view = Ti.UI.createView({
+                backgroundColor : 'blue',
+                height: 200,
+                width : 200,
+            });
+
+            var previewInteraction = TiPreviewInteraction.createPreviewInteraction({
+                sourceView : view
+            });
+
+            previewInteraction.addEventListener('peek', function(e) {
+           
+            });
+
+            previewInteraction.addEventListener('pop', function(e) {
+
+            });
+
+            previewInteraction.addEventListener('cancel', function(e) {
+            });
+
+            win.add(view);
+            win.open();
+
+
