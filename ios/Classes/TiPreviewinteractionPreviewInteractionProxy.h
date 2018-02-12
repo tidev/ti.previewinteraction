@@ -1,6 +1,6 @@
 /**
  * Ti.previewinteraction
- * Copyright (c) 2009-2018 by Axway Appcelerator. All Rights Reserved.
+ * Copyright (c) 2009-present by Axway Appcelerator. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  */
@@ -10,10 +10,9 @@
 #import "TiProxy.h"
 #import "TiViewProxy.h"
 
-@interface TiPreviewinteractionPreviewInteractionProxy : TiProxy<UIPreviewInteractionDelegate>
-{
+@interface TiPreviewinteractionPreviewInteractionProxy : TiProxy<UIPreviewInteractionDelegate> {
 @private
-  UIPreviewInteraction *previewInteraction;
+  UIPreviewInteraction *_previewInteraction;
 }
 
 - (void)setSourceView:(TiViewProxy *)sourceViewProxy;

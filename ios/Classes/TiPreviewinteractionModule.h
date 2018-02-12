@@ -8,9 +8,7 @@
 #import "TiModule.h"
 
 @interface TiPreviewinteractionModule : TiModule
-{
-}
 
-- (BOOL)previewInteractionSupported;
+- (NSNumber *)previewInteractionSupported;
 
 @end

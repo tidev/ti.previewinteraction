@@ -3,3 +3,6 @@ ios/ti.nfc.xcodeproj/project.xcworkspace/xcuserdata/*
 /ios/metadata.json
 /ios/build
 ios/ti.previewinteraction-iphone-*.zip
+ios/PreviewInteraction.xcodeproj/xcuserdata/*
+ios/PreviewInteraction.xcodeproj/project.xcworkspace/xcuserdata
+.DS_Store

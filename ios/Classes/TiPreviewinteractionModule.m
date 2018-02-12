@@ -34,9 +34,9 @@
 
 #pragma Public APIs
 
-- (BOOL)previewInteractionSupported
+- (NSNumber *)previewInteractionSupported
 {
-  return ([TiUtils isIOS10OrGreater] && [TiUtils forceTouchSupported]);
+  return @([TiUtils isIOS10OrGreater] && [TiUtils forceTouchSupported]);
 }
 
 @end
