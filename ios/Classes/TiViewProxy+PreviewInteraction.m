@@ -7,8 +7,8 @@
 
 #if IS_IOS_10
 
-#import "TiViewProxy+PreviewInteraction.h"
 #import "TiPreviewinteractionPreviewInteractionProxy.h"
+#import "TiViewProxy+PreviewInteraction.h"
 
 @implementation TiViewProxy (PreviewInteraction)
 

@@ -8,9 +8,9 @@
 #if IS_IOS_10
 
 #import "TiPreviewinteractionPreviewInteractionProxy.h"
-#import "TiViewProxy.h"
-#import "TiPoint.h"
 #import "TiBase.h"
+#import "TiPoint.h"
+#import "TiViewProxy.h"
 
 @implementation TiPreviewinteractionPreviewInteractionProxy
 
@@ -22,7 +22,7 @@
     NSLog(@"[WARN] Preview Interaction is not available on this device.");
     return;
   }
-  
+
   [super _initWithProperties:properties];
 }
 
@@ -52,11 +52,12 @@
     @"ended" : @(ended),
     @"touchPoint" : touchPoint
   };
-  
+
   if ([self _hasListeners:@"peek"]) {
     TiThreadPerformOnMainThread(^{
       [self fireEvent:@"peek" withObject:event];
-    }, NO);
+    },
+        NO);
   }
 }
 
@@ -69,11 +70,12 @@
     @"ended" : @(ended),
     @"touchPoint" : touchPoint
   };
-  
+
   if ([self _hasListeners:@"pop"]) {
     TiThreadPerformOnMainThread(^{
       [self fireEvent:@"pop" withObject:event];
-    }, NO);
+    },
+        NO);
   }
 }
 

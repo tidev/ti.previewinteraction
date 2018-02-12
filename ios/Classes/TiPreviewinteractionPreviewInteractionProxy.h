@@ -10,8 +10,8 @@
 #import "TiProxy.h"
 #import "TiViewProxy.h"
 
-@interface TiPreviewinteractionPreviewInteractionProxy : TiProxy<UIPreviewInteractionDelegate> {
-@private
+@interface TiPreviewinteractionPreviewInteractionProxy : TiProxy <UIPreviewInteractionDelegate> {
+  @private
   UIPreviewInteraction *_previewInteraction;
 }
 
