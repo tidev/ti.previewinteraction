@@ -1,6 +1,32 @@
 # Ti.PreviewInteraction
 
-Use the iOS 10+ UIPreviewInteraction API in Titanium!
+This module provides a custom user experience in response to 3D Touch interactions. 
+
+## UIPreviewInteraction Resources
+  * [Apple Docs](https://developer.apple.com/documentation/uikit/uipreviewinteraction)
+
+## Requirements
+    
+  * iOS 10 and later
+  * 3D-Touch supported devices
+  
+## Getting Started
+  * View the [Using Titanium Modules](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules) 
+    document for instructions on getting started with using this module in your application.
+
+## Accessing the Module
+  * Use `require` to access this module from JavaScript, the `TiPreviewInteraction` variable is a reference 
+    to the Module object.:
+```js
+var TiPreviewInteraction = require('ti.previewinteraction');
+```
+  * iOS example applications are located in the `ios/example/` folder of the module
+
+## Notes
+  * If you want to provide the system default previewing behavior (peek and pop), use [Ti.UI.iOS.PreviewContext](docs.appcelerator.com/platform/latest/#!/api/Titanium.UI.iOS.PreviewContext). 
+  * This feature requires iOS 10+ and a 3D-Touch capable device (such as iPhone 6S or iPhone 6S Plus).
+    You cannot test this  on the iOS simulator. To check if the current device supports this feature, 
+    use [`previewInteractionSupported`](https://github.com/appcelerator-modules/ti.previewinteraction#previewinteractionsupported---boolean).
 
 ## API's
 
