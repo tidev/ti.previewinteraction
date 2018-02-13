@@ -43,7 +43,7 @@ since: "1.0.0"
 osver: { ios: { min: "10.0" } }
 platforms: [iphone]
 
-methods:
+properties:
   - name: previewInteractionSupported
     summary: Determines if the current device supports preview interactions.
     since: "1.0.0"
