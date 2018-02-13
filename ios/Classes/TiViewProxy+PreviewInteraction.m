@@ -1,14 +1,14 @@
 /**
  * Ti.previewinteraction
- * Copyright (c) 2009-2018 by Axway Appcelerator. All Rights Reserved.
+ * Copyright (c) 2009-present by Axway Appcelerator. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  */
 
 #if IS_IOS_10
 
-#import "TiViewProxy+PreviewInteraction.h"
 #import "TiPreviewinteractionPreviewInteractionProxy.h"
+#import "TiViewProxy+PreviewInteraction.h"
 
 @implementation TiViewProxy (PreviewInteraction)
 

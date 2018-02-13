@@ -1,6 +1,6 @@
 /**
  * Ti.previewinteraction
- * Copyright (c) 2009-2018 by Axway Appcelerator. All Rights Reserved.
+ * Copyright (c) 2009-present by Axway Appcelerator. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  */
@@ -8,9 +8,9 @@
 #if IS_IOS_10
 
 #import "TiPreviewinteractionPreviewInteractionProxy.h"
-#import "TiViewProxy.h"
-#import "TiPoint.h"
 #import "TiBase.h"
+#import "TiPoint.h"
+#import "TiViewProxy.h"
 
 @implementation TiPreviewinteractionPreviewInteractionProxy
 
@@ -22,39 +22,42 @@
     NSLog(@"[WARN] Preview Interaction is not available on this device.");
     return;
   }
-  
+
   [super _initWithProperties:properties];
 }
 
 - (void)setSourceView:(TiViewProxy *)sourceViewProxy
 {
-  if (previewInteraction) {
+  if (_previewInteraction) {
     NSLog(@"[WARN] Preview interaction is already created.");
     return;
   }
-  previewInteraction = [[UIPreviewInteraction alloc] initWithView:[sourceViewProxy view]];
-  [previewInteraction setDelegate:self];
+  _previewInteraction = [[UIPreviewInteraction alloc] initWithView:[sourceViewProxy view]];
+  [_previewInteraction setDelegate:self];
 }
 
-#pragma mark UIPreviewInteractionDelegate methods
+#pragma mark UIPreviewInteractionDelegate
 
 - (BOOL)previewInteractionShouldBegin:(UIPreviewInteraction *)previewInteraction
 {
-  return true;
+  return YES;
 }
 
 - (void)previewInteraction:(UIPreviewInteraction *)previewInteraction didUpdatePreviewTransition:(CGFloat)transitionProgress ended:(BOOL)ended
 {
   CGPoint point = [previewInteraction locationInCoordinateSpace:previewInteraction.view];
   TiPoint *touchPoint = [[TiPoint alloc] initWithPoint:point];
-  NSDictionary *event = @{@"progress" : NUMFLOAT(transitionProgress),
-                          @"ended" : NUMBOOL(ended),
-                          @"touchPoint" : touchPoint
-                          };
+  NSDictionary *event = @{
+    @"progress" : @(transitionProgress),
+    @"ended" : @(ended),
+    @"touchPoint" : touchPoint
+  };
+
   if ([self _hasListeners:@"peek"]) {
     TiThreadPerformOnMainThread(^{
       [self fireEvent:@"peek" withObject:event];
-    }, NO);
+    },
+        NO);
   }
 }
 
@@ -62,14 +65,17 @@
 {
   CGPoint point = [previewInteraction locationInCoordinateSpace:previewInteraction.view];
   TiPoint *touchPoint = [[TiPoint alloc] initWithPoint:point];
-  NSDictionary *event = @{@"progress" : NUMFLOAT(transitionProgress),
-                          @"ended" : NUMBOOL(ended),
-                          @"touchPoint" : touchPoint
-                          };
+  NSDictionary *event = @{
+    @"progress" : @(transitionProgress),
+    @"ended" : @(ended),
+    @"touchPoint" : touchPoint
+  };
+
   if ([self _hasListeners:@"pop"]) {
     TiThreadPerformOnMainThread(^{
       [self fireEvent:@"pop" withObject:event];
-    }, NO);
+    },
+        NO);
   }
 }
 
@@ -84,7 +90,7 @@
 
 - (void)cancelInteraction:(id)unused
 {
-  [previewInteraction cancelInteraction];
+  [_previewInteraction cancelInteraction];
 }
 
 @end
