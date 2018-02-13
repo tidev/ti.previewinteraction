@@ -66,8 +66,13 @@ methods:
     summary: Cancels the current preview interaction.
     description: |
         When a preview interaction is in progress, use this method to cancel it, 
-        preventing any further callbacks.
+        preventing any further events to fire.
     since: "1.0.0"
+
+properties:
+  - name: sourceView
+    summary: The view to start the preview interation from.
+    type: Titanium.UI.View
 
 events:
   - name: peek
@@ -75,14 +80,14 @@ events:
     properties:
       - name: progress
         type: Number
-        summary: Provides progress of peek ranging between 0 and 1.
+        summary: Provides progress of peek ranging between 0.0 and 1.0.
 
       - name: ended
-        summary: Bool value indicating progress has ended or not.
+        summary: Value indicating progress has ended or not.
         type: Number
 
       - name: touchPoint
-        summary: Point at which source view got touched.
+        summary: Point at which source view was touched.
         type: Point
 
   - name: pop
@@ -99,6 +104,9 @@ events:
       - name: touchPoint
         summary: Point at which source view got touched.
         type: Point
+    
+  - name: cancel
+    summary: Fired when the preview interaction was cancelled by the user.
 
 examples:
   - title: Use preview interactions as property of a Ti.UI.View
