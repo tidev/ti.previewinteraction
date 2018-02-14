@@ -75,6 +75,10 @@ Fired when the user pops the preview.
 
 Fired when the preview interaction was cancelled by the user.
 
+## Report Issues
+
+If you run into issues, please file a [JIRA ticket](https://jira.appcelerator.org) or ask the [TiSlack](http://tislack.org) for help, thanks!
+
 ## Contributors
 
 * Vijay Vikram Singh
