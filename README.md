@@ -11,7 +11,7 @@ This module provides a custom user experience in response to 3D Touch interactio
   * 3D-Touch supported devices
   
 ## Getting Started
-  * View the [Using Titanium Modules](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules) 
+  * View the [Using Titanium Modules](http://docs.appcelerator.com/platform/latest/#!/guide/Using_Titanium_Modules) 
     document for instructions on getting started with using this module in your application.
 
 ## Accessing the Module
